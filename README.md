@@ -1,8 +1,8 @@
 <p align="center"><img src="assets/logo.svg" alt="tote logo: a shopping tote with a check mark" width="120"></p>
 
-# tote
+<h1 align="center">tote</h1>
 
-**Homebrew, without the beer.**
+<p align="center"><strong>Homebrew, without the beer.</strong></p>
 
 Homebrew is how most of us install software on a Mac. It also greets you with a 🍺 after every install, asks you to "pour bottles" into your "Cellar", and calls its sources "taps".
 
