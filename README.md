@@ -95,3 +95,7 @@ Ideas for better words are welcome. Open an issue.
 ## License
 
 MIT. See [LICENSE](LICENSE). tote is not affiliated with or endorsed by the Homebrew project.
+
+---
+
+<p align="center">If tote makes your terminal a little friendlier, consider giving it a ⭐ on GitHub. It helps others find it.</p>
