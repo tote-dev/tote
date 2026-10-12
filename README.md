@@ -53,13 +53,17 @@ When a guide online uses a brewing word, swap in the plain one:
 |---|---|
 | `brew install --cask zoom` | `tote install --app zoom` |
 | `brew tap user/repo` | `tote follow user/repo` |
+| brew, Homebrew | tote, Tote |
 | formula | package |
 | cask | app |
 | bottle | prebuilt |
 | keg | folder |
 | Cellar | Store |
+| Caskroom | Approom |
 | Brewfile | Bundlefile |
-| 🍺 | ✓ |
+| pour, pouring | extract, extracting |
+| brewing, brewed | building, built |
+| 🍺, 🍻 | ✓ |
 
 Forgot the new word? The old one still works. `tote tap user/repo` does the same thing as `tote follow user/repo`.
 

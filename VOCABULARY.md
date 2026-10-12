@@ -25,7 +25,7 @@ brew install wget                 ->  tote install wget      (nothing to swap)
 | 10 | Brewfile | **Bundlefile** | Totefile, Packagefile |
 | 11 | pour | **extract** | unpack |
 | 12 | brewing / brewed | **building / built** | making / made |
-| 13 | 🍺 | **✓** | ✅, 📦, nothing |
+| 13 | 🍺, 🍻 | **✓** | ✅, 📦, nothing |
 
 `bundle` stays as it is, because it isn't a drinking word.
 
@@ -34,9 +34,9 @@ brew install wget                 ->  tote install wget      (nothing to swap)
 | Homebrew | tote |
 |---|---|
 | `tap`, `untap`, `tap-info`, `tap-new` | `follow`, `unfollow`, `follow-info`, `follow-new` |
-| taps, tapped, tapping, untapping | follows, followed, following, unfollowing |
+| taps, tapped, tapping, untapped, untapping | follows, followed, following, unfollowed, unfollowing |
 | `--cask`, `--casks`, `casks`, `bump-cask-pr` | `--app`, `--apps`, `apps`, `bump-app-pr` |
-| `--formula`, `--formulae`, `formula`, `formulae`, `bump-formula-pr` | `--package`, `--packages`, `package`, `packages`, `bump-package-pr` |
+| `--formula`, `--formulae`, `formula`, `formulae`, formulas, `bump-formula-pr` | `--package`, `--packages`, `package`, `packages`, packages, `bump-package-pr` |
 | `bottle`, bottles, bottled, `unbottled` | `prebuilt`, prebuilts, prebuilt, `unprebuilt` |
 | `--force-bottle`, `--build-bottle`, `--bottle-tag` | `--force-prebuilt`, `--build-prebuilt`, `--prebuilt-tag` |
 | keg, kegs, keg-only | folder, folders, folder-only |
@@ -44,7 +44,8 @@ brew install wget                 ->  tote install wget      (nothing to swap)
 | `--caskroom`, Caskroom | `--approom`, Approom |
 | Brewfile | Bundlefile (an existing Brewfile is still read) |
 | `HOMEBREW_NO_AUTO_UPDATE` and every `HOMEBREW_*` setting | `TOTE_NO_AUTO_UPDATE` and so on (the old names keep working) |
-| Pouring, poured | Extracting, extracted |
+| Pouring, pours, poured | Extracting, extracts, extracted |
+| `--unbrewed`, unbrewed | `--unbuilt`, unbuilt |
 | "Run `brew untap x`" (hints in output) | "Run `tote unfollow x`" |
 
 Every other Homebrew command or flag containing one of these words is translated the same way, word by word: `--no-cleanup-tap` becomes `--no-cleanup-follow`, and `--poured-from-bottle` becomes `--extracted-from-prebuilt`. The list of names comes from Homebrew's own source.
