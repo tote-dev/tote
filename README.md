@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/logo.svg" alt="tote logo: a shopping tote with a check mark" width="120"></p>
+
 # tote
 
 **Homebrew, without the beer.**
