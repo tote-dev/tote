@@ -1,0 +1,11 @@
+#!/bin/sh
+# Stand-in for Homebrew used by the tests: prints its arguments and some
+# typical Homebrew output, then exits with the code in FAKE_EXIT.
+echo "args: $*"
+echo "badge: $HOMEBREW_INSTALL_BADGE"
+echo "auto-update: ${HOMEBREW_NO_AUTO_UPDATE:-unset}"
+echo "bundle-file: ${HOMEBREW_BUNDLE_FILE:-unset}"
+echo "==> Pouring wget--1.24.5.arm64_sonoma.bottle.tar.gz"
+echo "🍺  /opt/homebrew/Cellar/wget/1.24.5: 92 files, 4.5MB"
+echo "Error: No available formula with the name \"foo\". Did you mean to \`brew tap\` it?" >&2
+exit "${FAKE_EXIT:-0}"

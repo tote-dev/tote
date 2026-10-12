@@ -1,0 +1,66 @@
+# Builds tote for each platform when a version tag (v1.2.3) is pushed, and
+# attaches the archives to a GitHub release. install.sh downloads from there,
+# and the brew recipe (tote.rb on main) is updated to point at it.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+env:
+  BIN: tote
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-apple-darwin
+            os: macos-14
+          - target: x86_64-apple-darwin
+            os: macos-14
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-latest
+          - target: aarch64-unknown-linux-gnu
+            os: ubuntu-24.04-arm
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup target add ${{ matrix.target }}
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: Package
+        run: |
+          name="$BIN-${{ matrix.target }}.tar.gz"
+          tar -czf "$name" -C "target/${{ matrix.target }}/release" "$BIN"
+          shasum -a 256 "$name" > "$name.sha256"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}
+          path: ${{ env.BIN }}-${{ matrix.target }}.tar.gz*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" --generate-notes dist/*.tar.gz dist/*.sha256
+      - name: Update the brew recipe
+        run: |
+          scripts/write-formula.sh "$GITHUB_REF_NAME" dist > "$BIN.rb"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$BIN.rb"
+          git commit -m "Update $BIN.rb for $GITHUB_REF_NAME"
+          git push origin main
